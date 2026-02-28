@@ -3,903 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diofdev – Développement Web & Mobile depuis 2015</title>
-    <!-- Meta description pour SEO -->
-    <meta name="description" content="Diofdev, votre partenaire de confiance pour le développement d'applications web et mobile sur mesure. 10 ans d'expertise au service de votre transformation digitale.">
-    <!-- Font Awesome pour icônes -->
+    <title>Diofdev – Partenaire technologique en Afrique</title>
+    <!-- Balises Open Graph pour crédibilité -->
+    <meta property="og:title" content="Diofdev – Partenaire technologique en Afrique">
+    <meta property="og:description" content="Solutions numériques sur mesure pour entreprises, institutions et startups.">
+    <meta property="og:type" content="website">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts pour typographie -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- AOS Library pour animations au scroll -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Fichier CSS principal -->
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Feuille de style principale -->
+    <link rel="stylesheet" href="style.css">
     <style>
-          /* ===== VARIABLES ===== */
-          :root {
-              --primary: #2563eb;       /* Bleu moderne */
-              --primary-dark: #1e40af;
-              --secondary: #7c3aed;     /* Violet */
-              --accent: #f59e0b;        /* Orange */
-              --dark: #1e293b;
-              --light: #f8fafc;
-              --gray: #64748b;
-              --light-gray: #e2e8f0;
-              --white: #ffffff;
-              --black: #0f172a;
-              --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-              --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-              --transition: all 0.3s ease;
-          }
-          
-          /* ===== RESET ===== */
-          * {
-              margin: 0;
-              padding: 0;
-              box-sizing: border-box;
-          }
-          
-          html {
-              scroll-behavior: smooth;
-          }
-          
-          body {
-              font-family: 'Poppins', sans-serif;
-              line-height: 1.6;
-              color: var(--dark);
-              background: var(--white);
-              overflow-x: hidden;
-          }
-          
-          a {
-              text-decoration: none;
-              color: inherit;
-          }
-          
-          ul {
-              list-style: none;
-          }
-          
-          img {
-              max-width: 100%;
-              height: auto;
-              display: block;
-          }
-          
-          .container {
-              width: 90%;
-              max-width: 1200px;
-              margin: 0 auto;
-              padding: 0 15px;
-          }
-          
-          .section-padding {
-              padding: 80px 0;
-          }
-          
-          .highlight {
-              color: var(--primary);
-          }
-          
-          /* ===== HEADER & NAVIGATION ===== */
-          header {
-              position: fixed;
-              top: 0;
-              left: 0;
-              width: 100%;
-              background: rgba(255, 255, 255, 0.95);
-              backdrop-filter: blur(10px);
-              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-              z-index: 1000;
-              transition: var(--transition);
-          }
-          
-          .navbar {
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              height: 80px;
-          }
-          
-          .logo {
-              display: flex;
-              align-items: baseline;
-              gap: 8px;
-          }
-          
-          .logo-text {
-              font-size: 1.8rem;
-              font-weight: 700;
-              color: var(--dark);
-          }
-          
-          .since {
-              font-size: 0.75rem;
-              color: var(--gray);
-              font-weight: 300;
-          }
-          
-          .nav-menu {
-              display: flex;
-              gap: 30px;
-          }
-          
-          .nav-link {
-              font-weight: 500;
-              color: var(--dark);
-              transition: var(--transition);
-              position: relative;
-          }
-          
-          .nav-link::after {
-              content: '';
-              position: absolute;
-              bottom: -5px;
-              left: 0;
-              width: 0;
-              height: 2px;
-              background: var(--primary);
-              transition: var(--transition);
-          }
-          
-          .nav-link:hover::after,
-          .nav-link.active::after {
-              width: 100%;
-          }
-          
-          .nav-link:hover,
-          .nav-link.active {
-              color: var(--primary);
-          }
-          
-          .hamburger {
-              display: none;
-              cursor: pointer;
-          }
-          
-          .bar {
-              display: block;
-              width: 25px;
-              height: 3px;
-              margin: 5px 0;
-              background: var(--dark);
-              transition: var(--transition);
-          }
-          
-          /* ===== HERO SECTION ===== */
-          .hero {
-              position: relative;
-              min-height: 100vh;
-              display: flex;
-              align-items: center;
-              background: linear-gradient(135deg, #f0f9ff 0%, #e6f2ff 100%);
-              overflow: hidden;
-              padding: 100px 0;
-          }
-          
-          .hero-content {
-              max-width: 700px;
-              position: relative;
-              z-index: 2;
-          }
-          
-          .hero-subtitle {
-              font-size: 1.2rem;
-              font-weight: 400;
-              color: var(--primary);
-              margin-bottom: 15px;
-              letter-spacing: 2px;
-              text-transform: uppercase;
-          }
-          
-          .hero-title {
-              font-size: 4rem;
-              font-weight: 700;
-              line-height: 1.2;
-              margin-bottom: 20px;
-              color: var(--dark);
-          }
-          
-          .hero-description {
-              font-size: 1.2rem;
-              color: var(--gray);
-              margin-bottom: 30px;
-              max-width: 600px;
-          }
-          
-          .hero-buttons {
-              display: flex;
-              gap: 20px;
-              flex-wrap: wrap;
-          }
-          
-          .btn {
-              display: inline-block;
-              padding: 12px 32px;
-              border-radius: 50px;
-              font-weight: 500;
-              transition: var(--transition);
-              cursor: pointer;
-              border: none;
-              font-size: 1rem;
-          }
-          
-          .btn-primary {
-              background: var(--primary);
-              color: white;
-              box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
-          }
-          
-          .btn-primary:hover {
-              background: var(--primary-dark);
-              transform: translateY(-2px);
-              box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
-          }
-          
-          .btn-outline {
-              background: transparent;
-              color: var(--primary);
-              border: 2px solid var(--primary);
-          }
-          
-          .btn-outline:hover {
-              background: var(--primary);
-              color: white;
-              transform: translateY(-2px);
-          }
-          
-          .btn-block {
-              width: 100%;
-          }
-          
-          .btn-small {
-              display: inline-block;
-              padding: 8px 20px;
-              background: var(--primary);
-              color: white;
-              border-radius: 30px;
-              font-size: 0.9rem;
-              transition: var(--transition);
-          }
-          
-          .btn-small:hover {
-              background: var(--primary-dark);
-              transform: translateY(-2px);
-          }
-          
-          /* Formes décoratives */
-          .hero-shapes {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              z-index: 1;
-          }
-          
-          .shape {
-              position: absolute;
-              border-radius: 50%;
-              background: rgba(37, 99, 235, 0.05);
-          }
-          
-          .shape1 {
-              width: 400px;
-              height: 400px;
-              top: -100px;
-              right: -100px;
-          }
-          
-          .shape2 {
-              width: 300px;
-              height: 300px;
-              bottom: -50px;
-              left: -50px;
-              background: rgba(124, 58, 237, 0.05);
-          }
-          
-          /* ===== SECTION HEADER ===== */
-          .section-header {
-              text-align: center;
-              margin-bottom: 50px;
-          }
-          
-          .section-header h2 {
-              font-size: 2.5rem;
-              font-weight: 700;
-              margin-bottom: 15px;
-              color: var(--dark);
-          }
-          
-          .section-header p {
-              font-size: 1.1rem;
-              color: var(--gray);
-              max-width: 600px;
-              margin: 0 auto;
-          }
-          
-          /* ===== SERVICES ===== */
-          .services-grid {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-              gap: 30px;
-          }
-          
-          .service-card {
-              background: var(--white);
-              padding: 40px 30px;
-              border-radius: 20px;
-              box-shadow: var(--shadow);
-              transition: var(--transition);
-              text-align: center;
-              border: 1px solid var(--light-gray);
-          }
-          
-          .service-card:hover {
-              transform: translateY(-10px);
-              box-shadow: var(--shadow-lg);
-              border-color: var(--primary);
-          }
-          
-          .service-icon {
-              width: 80px;
-              height: 80px;
-              background: rgba(37, 99, 235, 0.1);
-              border-radius: 50%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              margin: 0 auto 25px;
-              font-size: 2rem;
-              color: var(--primary);
-          }
-          
-          .service-card h3 {
-              font-size: 1.3rem;
-              margin-bottom: 15px;
-              color: var(--dark);
-          }
-          
-          .service-card p {
-              color: var(--gray);
-              line-height: 1.6;
-          }
-          
-          /* ===== ABOUT ===== */
-          .about-wrapper {
-              display: grid;
-              grid-template-columns: 1fr 1fr;
-              gap: 60px;
-              align-items: center;
-          }
-          
-          .about-image img {
-              border-radius: 20px;
-              box-shadow: var(--shadow-lg);
-              width: 100%;
-          }
-          
-          .about-content h2 {
-              font-size: 2.2rem;
-              margin-bottom: 20px;
-              line-height: 1.3;
-          }
-          
-          .about-content p {
-              color: var(--gray);
-              margin-bottom: 20px;
-          }
-          
-          .about-stats {
-              display: flex;
-              gap: 30px;
-              margin: 30px 0;
-          }
-          
-          .stat-item {
-              text-align: center;
-          }
-          
-          .stat-number {
-              display: block;
-              font-size: 2.2rem;
-              font-weight: 700;
-              color: var(--primary);
-              line-height: 1.2;
-          }
-          
-          .stat-label {
-              font-size: 0.9rem;
-              color: var(--gray);
-          }
-          
-          /* ===== PORTFOLIO ===== */
-          .portfolio-grid {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-              gap: 30px;
-          }
-          
-          .portfolio-item {
-              background: var(--white);
-              border-radius: 15px;
-              overflow: hidden;
-              box-shadow: var(--shadow);
-              transition: var(--transition);
-              border: 1px solid var(--light-gray);
-          }
-          
-          .portfolio-item:hover {
-              transform: translateY(-5px);
-              box-shadow: var(--shadow-lg);
-          }
-          
-          .portfolio-img {
-              height: 200px;
-              overflow: hidden;
-          }
-          
-          .portfolio-img img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-              transition: var(--transition);
-          }
-          
-          .portfolio-item:hover .portfolio-img img {
-              transform: scale(1.1);
-          }
-          
-          .portfolio-info {
-              padding: 20px;
-          }
-          
-          .portfolio-info h3 {
-              font-size: 1.2rem;
-              margin-bottom: 10px;
-              color: var(--dark);
-          }
-          
-          .portfolio-info p {
-              color: var(--gray);
-              font-size: 0.95rem;
-              margin-bottom: 15px;
-          }
-          
-          /* ===== TESTIMONIALS ===== */
-          .testimonials {
-              background: var(--light);
-          }
-          
-          .testimonials-slider {
-              display: grid;
-              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-              gap: 30px;
-              max-width: 1000px;
-              margin: 0 auto;
-          }
-          
-          .testimonial-item {
-              background: var(--white);
-              padding: 30px;
-              border-radius: 15px;
-              box-shadow: var(--shadow);
-              transition: var(--transition);
-          }
-          
-          .testimonial-item:hover {
-              transform: translateY(-5px);
-              box-shadow: var(--shadow-lg);
-          }
-          
-          .testimonial-content {
-              margin-bottom: 20px;
-          }
-          
-          .testimonial-content i {
-              color: var(--primary);
-              font-size: 2rem;
-              margin-bottom: 10px;
-              opacity: 0.3;
-          }
-          
-          .testimonial-content p {
-              font-style: italic;
-              color: var(--dark);
-          }
-          
-          .testimonial-author {
-              display: flex;
-              align-items: center;
-              gap: 15px;
-          }
-          
-          .testimonial-author img {
-              width: 60px;
-              height: 60px;
-              border-radius: 50%;
-              object-fit: cover;
-          }
-          
-          .testimonial-author h4 {
-              font-size: 1rem;
-              margin-bottom: 5px;
-          }
-          
-          .testimonial-author span {
-              font-size: 0.85rem;
-              color: var(--gray);
-          }
-          
-          /* ===== CONTACT ===== */
-          .contact-wrapper {
-              display: grid;
-              grid-template-columns: 1fr 2fr;
-              gap: 50px;
-              background: var(--white);
-              padding: 40px;
-              border-radius: 20px;
-              box-shadow: var(--shadow);
-          }
-          
-          .contact-info {
-              background: var(--light);
-              padding: 30px;
-              border-radius: 15px;
-          }
-          
-          .contact-item {
-              display: flex;
-              align-items: flex-start;
-              gap: 15px;
-              margin-bottom: 25px;
-          }
-          
-          .contact-item i {
-              width: 40px;
-              height: 40px;
-              background: var(--primary);
-              color: white;
-              border-radius: 50%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              font-size: 1.2rem;
-          }
-          
-          .contact-item h4 {
-              font-size: 1rem;
-              margin-bottom: 5px;
-              color: var(--dark);
-          }
-          
-          .contact-item p {
-              color: var(--gray);
-          }
-          
-          .social-links {
-              display: flex;
-              gap: 15px;
-              margin-top: 20px;
-          }
-          
-          .social-links a {
-              width: 40px;
-              height: 40px;
-              background: var(--white);
-              border-radius: 50%;
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              color: var(--primary);
-              transition: var(--transition);
-              box-shadow: var(--shadow);
-          }
-          
-          .social-links a:hover {
-              background: var(--primary);
-              color: white;
-              transform: translateY(-3px);
-          }
-          
-          .contact-form {
-              display: flex;
-              flex-direction: column;
-              gap: 20px;
-          }
-          
-          .form-group input,
-          .form-group textarea {
-              width: 100%;
-              padding: 15px;
-              border: 1px solid var(--light-gray);
-              border-radius: 10px;
-              font-family: inherit;
-              transition: var(--transition);
-          }
-          
-          .form-group input:focus,
-          .form-group textarea:focus {
-              outline: none;
-              border-color: var(--primary);
-              box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
-          }
-          
-          /* ===== FOOTER ===== */
-          .footer {
-              background: var(--dark);
-              color: var(--light-gray);
-              padding: 60px 0 20px;
-          }
-          
-          .footer-content {
-              display: grid;
-              grid-template-columns: 2fr 1fr 2fr;
-              gap: 40px;
-              margin-bottom: 40px;
-          }
-          
-          .footer-logo h2 {
-              font-size: 2rem;
-              margin-bottom: 15px;
-              color: white;
-          }
-          
-          .footer-links h4,
-          .footer-newsletter h4 {
-              color: white;
-              margin-bottom: 20px;
-              font-size: 1.1rem;
-          }
-          
-          .footer-links ul li {
-              margin-bottom: 10px;
-          }
-          
-          .footer-links ul li a:hover {
-              color: var(--primary);
-          }
-          
-          .footer-newsletter p {
-              margin-bottom: 15px;
-          }
-          
-          .footer-newsletter form {
-              display: flex;
-              gap: 10px;
-          }
-          
-          .footer-newsletter input {
-              flex: 1;
-              padding: 12px;
-              border: none;
-              border-radius: 30px;
-              background: rgba(255, 255, 255, 0.1);
-              color: white;
-          }
-          
-          .footer-newsletter input::placeholder {
-              color: rgba(255, 255, 255, 0.6);
-          }
-          
-          .footer-newsletter button {
-              width: 45px;
-              height: 45px;
-              background: var(--primary);
-              border: none;
-              border-radius: 50%;
-              color: white;
-              cursor: pointer;
-              transition: var(--transition);
-          }
-          
-          .footer-newsletter button:hover {
-              background: var(--primary-dark);
-          }
-          
-          .footer-bottom {
-              text-align: center;
-              padding-top: 20px;
-              border-top: 1px solid rgba(255, 255, 255, 0.1);
-              font-size: 0.9rem;
-          }
-          
-          .footer-bottom a {
-              color: var(--light-gray);
-              text-decoration: underline;
-          }
-          
-          .footer-bottom a:hover {
-              color: var(--primary);
-          }
-          
-          /* ===== RESPONSIVE ===== */
-          @media (max-width: 992px) {
-              .hero-title {
-                  font-size: 3rem;
-              }
-          
-              .about-wrapper {
-                  grid-template-columns: 1fr;
-                  gap: 30px;
-              }
-          
-              .about-image {
-                  order: 2;
-              }
-          
-              .about-content {
-                  order: 1;
-              }
-          
-              .contact-wrapper {
-                  grid-template-columns: 1fr;
-              }
-          }
-          
-          @media (max-width: 768px) {
-              .hamburger {
-                  display: block;
-              }
-          
-              .hamburger.active .bar:nth-child(2) {
-                  opacity: 0;
-              }
-          
-              .hamburger.active .bar:nth-child(1) {
-                  transform: translateY(8px) rotate(45deg);
-              }
-          
-              .hamburger.active .bar:nth-child(3) {
-                  transform: translateY(-8px) rotate(-45deg);
-              }
-          
-              .nav-menu {
-                  position: fixed;
-                  left: -100%;
-                  top: 80px;
-                  gap: 0;
-                  flex-direction: column;
-                  background: var(--white);
-                  width: 100%;
-                  text-align: center;
-                  transition: 0.3s;
-                  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
-                  padding: 30px 0;
-              }
-          
-              .nav-menu.active {
-                  left: 0;
-              }
-          
-              .nav-menu li {
-                  margin: 15px 0;
-              }
-          
-              .hero-title {
-                  font-size: 2.5rem;
-              }
-          
-              .hero-description {
-                  font-size: 1rem;
-              }
-          
-              .hero-buttons {
-                  flex-direction: column;
-                  gap: 15px;
-              }
-          
-              .btn {
-                  text-align: center;
-              }
-          
-              .section-header h2 {
-                  font-size: 2rem;
-              }
-          
-              .about-stats {
-                  flex-direction: column;
-                  gap: 15px;
-              }
-          
-              .footer-content {
-                  grid-template-columns: 1fr;
-                  gap: 30px;
-              }
-          }
-          
-          @media (max-width: 576px) {
-              .hero-title {
-                  font-size: 2rem;
-              }
-          
-              .section-padding {
-                  padding: 50px 0;
-              }
-          }
+
+        /* Reset et base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .bg-light {
+            background-color: #f8fafc;
+        }
+        
+        .highlight {
+            color: #2563eb;
+        }
+        
+        /* Navigation */
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: #0f172a;
+        }
+        
+        .since {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-left: 5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #2563eb;
+        }
+        
+        .burger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #334155;
+        }
+        
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border-color: rgba(255,255,255,0.3);
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: #0f172a;
+            border-color: white;
+        }
+        
+        /* Sections headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: #475569;
+            font-size: 1.1rem;
+        }
+        
+        /* Services grid (réutilisé pour partenariats et engagement) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        
+        .service-card i {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+        
+        .service-card p {
+            color: #475569;
+        }
+        
+        /* About */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .about-text p {
+            margin-bottom: 1.2rem;
+            color: #334155;
+        }
+        
+        .about-stats {
+            flex: 1;
+            min-width: 250px;
+            background: #2563eb;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .stat {
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat .number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1.2;
+        }
+        
+        .stat span:last-child {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .about-stats small {
+            display: block;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Portfolio */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        
+        .portfolio-info p {
+            color: #475569;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .btn-small {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: background 0.3s;
+        }
+        
+        .btn-small:hover {
+            background: #1d4ed8;
+        }
+        
+        /* Contact */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 280px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-info i {
+            width: 24px;
+            color: #2563eb;
+        }
+        
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: #334155;
+            font-size: 1.8rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #2563eb;
+        }
+        
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+        }
+        
+        .contact-form button {
+            align-self: flex-start;
+            border: none;
+            cursor: pointer;
+            background: #2563eb;
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .contact-form button:hover {
+            background: #1d4ed8;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        footer a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+        
+            .nav-links.active {
+                display: flex;
+            }
+        
+            .nav-links li {
+                margin: 1rem 0;
+            }
+        
+            .burger {
+                display: block;
+            }
+        
+            .hero-title {
+                font-size: 2rem;
+            }
+        
+            .hero-description {
+                font-size: 1rem;
+            }
+        
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        
+            .about-content {
+                flex-direction: column;
+            }
+        
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
     </style>
 </head>
 <body>
-    <!-- Header avec navigation -->
-    <header id="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">
-                    <span class="logo-text">Diof<span class="highlight">dev</span></span>
-                    <span class="since">Depuis 2015</span>
-                </a>
-                <ul class="nav-menu">
-                    <li><a href="#accueil" class="nav-link active">Accueil</a></li>
-                    <li><a href="#services" class="nav-link">Services</a></li>
-                    <li><a href="#apropos" class="nav-link">À propos</a></li>
-                    <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                    <li><a href="#temoignages" class="nav-link">Témoignages</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <div class="hamburger">
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                    <span class="bar"></span>
-                </div>
-            </nav>
-        </div>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h1>Diof<span class="highlight">dev</span></h1>
+                <span class="since">Depuis 2015</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#partenariats">Partenariats</a></li>
+                <li><a href="#apropos">À propos</a></li>
+                <li><a href="#portfolio">Réalisations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="burger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
     </header>
 
-    <!-- Section Accueil / Hero -->
+    <!-- Section Accueil (Hero) -->
     <section id="accueil" class="hero">
-        <div class="container">
-            <div class="hero-content" data-aos="fade-up">
-                <h5 class="hero-subtitle">Bienvenue chez</h5>
-                <h1 class="hero-title">Diof<span class="highlight">dev</span></h1>
-                <p class="hero-description">Votre partenaire technologique depuis 10 ans. Nous transformons vos idées en solutions web et mobile innovantes, fiables et performantes.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn btn-primary">Démarrer un projet</a>
-                    <a href="#portfolio" class="btn btn-outline">Voir nos réalisations</a>
-                </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Partenaire technologique pour des solutions numériques durables
+            </h1>
+            <p class="hero-description">
+                Depuis 2015, Diofdev accompagne entreprises, institutions et startups 
+                dans la conception, le développement et la mise à l’échelle de solutions digitales 
+                à fort impact. Nous co-construisons avec nos partenaires des solutions fiables, 
+                évolutives et alignées sur leurs enjeux stratégiques.
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Devenir partenaire</a>
+                <a href="#portfolio" class="btn btn-outline">Découvrir nos références</a>
             </div>
-        </div>
-        <!-- Éléments décoratifs -->
-        <div class="hero-shapes">
-            <div class="shape shape1"></div>
-            <div class="shape shape2"></div>
         </div>
     </section>
 
     <!-- Section Services -->
     <section id="services" class="services section-padding">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Nos <span class="highlight">expertises</span></h2>
-                <p>Des solutions sur mesure pour répondre à tous vos besoins digitaux</p>
+            <div class="section-header">
+                <h2>Notre <span class="highlight">expertise</span></h2>
+                <p>Des compétences techniques au service de vos ambitions</p>
             </div>
             <div class="services-grid">
-                <div class="service-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Développement Web</h3>
-                    <p>Sites vitrines, e‑commerce, applications métiers, portails, interfaces d'administration.</p>
+                <div class="service-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Développement web</h3>
+                    <p>Sites vitrines, plateformes e‑commerce, applications métiers, interfaces d'administration.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Applications Mobile</h3>
-                    <p>iOS et Android (natif, Flutter, React Native) avec une expérience utilisateur optimale.</p>
+                <div class="service-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Applications mobiles</h3>
+                    <p>iOS et Android (natif ou cross‑platform) – expériences utilisateur fluides et performantes.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <h3>Solutions Cloud & API</h3>
-                    <p>Architecture scalable, intégration d'API, déploiement sur AWS/Azure, bases de données.</p>
+                <div class="service-card">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h3>Solutions sur mesure</h3>
+                    <p>Logiciels de gestion, API, intégration de bases de données, architecture cloud.</p>
                 </div>
-                <div class="service-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Conseil & Audit</h3>
-                    <p>Analyse de votre système existant, optimisation, conseil en stratégie digitale.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle section : Partenariats -->
+    <section id="partenariats" class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nos <span class="highlight">partenariats</span></h2>
+                <p>Nous croyons aux collaborations stratégiques et durables</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Entreprises & Groupes</h3>
+                    <p>Externalisation technique, innovation digitale, co-développement et transformation numérique.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Institutions & ONG</h3>
+                    <p>Digitalisation de services publics, plateformes métiers, solutions à impact social.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Startups</h3>
+                    <p>Développement MVP, accompagnement technique long terme, mise à l’échelle.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Agences & ESN</h3>
+                    <p>Sous-traitance qualifiée, renfort d’équipe, projets collaboratifs.</p>
                 </div>
             </div>
         </div>
@@ -908,29 +580,65 @@
     <!-- Section À propos -->
     <section id="apropos" class="about section-padding">
         <div class="container">
-            <div class="about-wrapper">
-                <div class="about-image" data-aos="fade-right">
-                    <img src="images/about.jpg" alt="Équipe Diofdev">
+            <div class="section-header">
+                <h2>Qui sommes-<span class="highlight">nous ?</span></h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        Fondée en 2015, <strong>Diofdev</strong> est une entreprise passionnée par l’innovation technologique.
+                        Nous accompagnons les entrepreneurs, les PME et les institutions dans leur transformation digitale.
+                    </p>
+                    <p>
+                        Notre approche repose sur une méthodologie structurée :
+                        analyse des besoins, cadrage stratégique, architecture technique,
+                        développement agile, tests qualité et accompagnement post-déploiement.
+                    </p>
+                    <p>
+                        Nous intervenons comme partenaire technique et stratégique,
+                        capable d’anticiper les enjeux, sécuriser les choix technologiques
+                        et assurer la pérennité des solutions livrées.
+                    </p>
                 </div>
-                <div class="about-content" data-aos="fade-left">
-                    <h2>10 ans d'<span class="highlight">innovation</span> à votre service</h2>
-                    <p>Fondée en 2015, <strong>Diofdev</strong> est née de la passion de son fondateur pour les technologies et le désir d'accompagner les entreprises dans leur transformation numérique. En une décennie, nous avons réalisé plus de 80 projets web et mobile, allant de la startup au grand compte.</p>
-                    <p>Notre force : une équipe pluridisciplinaire, une méthodologie agile, et une écoute attentive de vos besoins. Nous ne livrons pas seulement du code, mais des solutions qui créent de la valeur.</p>
-                    <div class="about-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">10+</span>
-                            <span class="stat-label">Ans d'expérience</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">80+</span>
-                            <span class="stat-label">Projets livrés</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Satisfaction client</span>
-                        </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <span class="number">+50</span>
+                        <span>projets livrés</span>
                     </div>
-                    <a href="#contact" class="btn btn-primary">Parlons de votre projet</a>
+                    <div class="stat">
+                        <span class="number">100%</span>
+                        <span>clients satisfaits</span>
+                    </div>
+                    <div class="stat">
+                        <span class="number">10</span>
+                        <span>ans d'expérience</span>
+                    </div>
+                    <div style="margin-top:20px;">
+                        <small>Basé à Dakar – Interventions nationales et internationales.</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nouvelle section : Mission / Vision / Valeurs -->
+    <section class="section-padding bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Notre <span class="highlight">engagement</span></h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Mission</h3>
+                    <p>Concevoir et déployer des solutions numériques qui améliorent durablement la performance des organisations.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Vision</h3>
+                    <p>Devenir un acteur technologique africain de référence, reconnu pour la qualité de ses partenariats.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Valeurs</h3>
+                    <p>Exigence technique, fiabilité, transparence, collaboration durable et innovation utile.</p>
                 </div>
             </div>
         </div>
@@ -939,104 +647,33 @@
     <!-- Section Portfolio / Réalisations -->
     <section id="portfolio" class="portfolio section-padding">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Nos <span class="highlight">réalisations</span></h2>
-                <p>Quelques projets dont nous sommes fiers</p>
+            <div class="section-header">
+                <h2>Réalisations <span class="highlight">marquantes</span></h2>
+                <p>Quelques projets qui ont fait la différence</p>
             </div>
             <div class="portfolio-grid">
-                <!-- Projet 1 : COMPO -->
-                <div class="portfolio-item" data-aos="zoom-in">
-                    <div class="portfolio-img">
-                        <img src="images/compo.jpg" alt="Application COMPO">
-                    </div>
+                <div class="portfolio-item">
+                    <img src="images/compo.jpg" alt="Application COMPO">
                     <div class="portfolio-info">
                         <h3>COMPO</h3>
-                        <p>Application de gestion scolaire : bulletins automatiques, propositions de passage, rapports. Disponible sur Android et Windows.</p>
-                        <a href="https://play.google.com/store/apps/details?id=com.diofdev.compo" target="_blank" class="btn-small">Voir le projet</a>
+                        <p>Application de gestion scolaire (bulletins automatiques, rapports). Utilisée par des écoles publiques et privées en Afrique de l'Ouest.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.diofdev.compo" target="_blank" class="btn-small">Voir sur Play Store</a>
                     </div>
                 </div>
-                <!-- Projet 2 -->
-                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="portfolio-img">
-                        <img src="images/project2.jpg" alt="Projet 2">
-                    </div>
+                <div class="portfolio-item">
+                    <img src="images/agrise.jpg" alt="Projet 2">
                     <div class="portfolio-info">
-                        <h3>Projet E-commerce</h3>
-                        <p>Plateforme de vente en ligne pour une marque de mode, avec gestion de stock, paiement sécurisé et dashboard admin.</p>
-                        <a href="#" class="btn-small">Voir le projet</a>
+                        <h3>AGRISE/h3>
+                        <p>Agrise est une plateforme cronstruite pour rassembler tous les acteurs du domaine de l'agriculture et du foncier.</p>
+                        <a href="https://agrise-7291a.web.app/" class="btn-small">Étude de cas</a>
                     </div>
                 </div>
-                <!-- Projet 3 -->
-                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="portfolio-img">
-                        <img src="images/project3.jpg" alt="Projet 3">
-                    </div>
+                <div class="portfolio-item">
+                    <img src="images/projet3.jpg" alt="Projet 3">
                     <div class="portfolio-info">
-                        <h3>Application Mobile Santé</h3>
-                        <p>Application de suivi médical pour patients chroniques, avec rappels, messagerie et tableau de bord pour les médecins.</p>
-                        <a href="#" class="btn-small">Voir le projet</a>
-                    </div>
-                </div>
-                <!-- Projet 4 -->
-                <div class="portfolio-item" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="portfolio-img">
-                        <img src="images/project4.jpg" alt="Projet 4">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Plateforme de formation</h3>
-                        <p>LMS sur mesure pour un organisme de formation, avec gestion des cours, quiz, certification et espace apprenant.</p>
-                        <a href="#" class="btn-small">Voir le projet</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Témoignages -->
-    <section id="temoignages" class="testimonials section-padding">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Ce qu'ils <span class="highlight">disent</span> de nous</h2>
-                <p>La satisfaction de nos clients est notre plus belle récompense</p>
-            </div>
-            <div class="testimonials-slider" data-aos="fade-up">
-                <div class="testimonial-item">
-                    <div class="testimonial-content">
-                        <i class="fas fa-quote-left"></i>
-                        <p>Diofdev a réalisé notre application mobile avec un professionnalisme exemplaire. Écoute, réactivité, qualité : je recommande vivement !</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="images/client1.jpg" alt="Client 1">
-                        <div>
-                            <h4>Moussa Diop</h4>
-                            <span>CEO, StartUp Sénégal</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-content">
-                        <i class="fas fa-quote-left"></i>
-                        <p>Nous collaborons avec Diofdev depuis 3 ans. Leur expertise technique et leur capacité à innover sont impressionnantes. Un partenaire de confiance.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="images/client2.jpg" alt="Client 2">
-                        <div>
-                            <h4>Aminata Ndiaye</h4>
-                            <span>Directrice Marketing, Groupe XYZ</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-item">
-                    <div class="testimonial-content">
-                        <i class="fas fa-quote-left"></i>
-                        <p>L'application COMPO a révolutionné la gestion de notre école. Un grand merci à toute l'équipe pour son accompagnement.</p>
-                    </div>
-                    <div class="testimonial-author">
-                        <img src="images/client3.jpg" alt="Client 3">
-                        <div>
-                            <h4>Abdoulaye Fall</h4>
-                            <span>Proviseur, Lycée Moderne</span>
-                        </div>
+                        <h3>XOTAAM</h3>
+                        <p>Application pour faciliter aux clients de trouver des chauffeurs professionnels.</p>
+                        <a href="https://play.google.com/store/apps/details?id=com.diofdev.xotaam" class="btn-small">Étude de cas</a>
                     </div>
                 </div>
             </div>
@@ -1046,189 +683,55 @@
     <!-- Section Contact -->
     <section id="contact" class="contact section-padding">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2>Discutons de <span class="highlight">votre projet</span></h2>
-                <p>Prenez contact avec nous, nous vous répondrons sous 24h</p>
+            <div class="section-header">
+                <h2>Construisons un <span class="highlight">partenariat durable</span></h2>
+                <p>
+                    Vous êtes une entreprise, une institution ou une organisation
+                    à la recherche d’un partenaire technologique fiable ?
+                    Échangeons sur vos enjeux et explorons les opportunités de collaboration.
+                </p>
             </div>
-            <div class="contact-wrapper">
-                <div class="contact-info" data-aos="fade-right">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h4>Adresse</h4>
-                            <p>Dakar, Sénégal</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h4>Téléphone</h4>
-                            <p>+221 77 123 45 67</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h4>Email</h4>
-                            <p>contact@diofdev.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <h4>WhatsApp</h4>
-                            <p>+221 78 987 65 43</p>
-                        </div>
-                    </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> alioune.senghor1@education.sn</p>
+                    <p><i class="fas fa-phone"></i> +221 77 200 21 82</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dakar, Sénégal</p>
                     <div class="social-links">
-                        <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
                         <a href="https://chat.whatsapp.com/JWixlguboyUCMfa1fsNjfV" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i></a>
                     </div>
                 </div>
-                <form class="contact-form" data-aos="fade-left" action="#" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="nom" placeholder="Votre nom" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Votre email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="sujet" placeholder="Sujet">
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-block">Envoyer le message</button>
+                <form class="contact-form" action="#" method="post">
+                    <input type="text" name="nom" placeholder="Votre nom" required>
+                    <input type="email" name="email" placeholder="Votre email" required>
+                    <textarea name="message" rows="5" placeholder="Votre message" required></textarea>
+                    <button type="submit" class="btn btn-primary">Envoyer la demande</button>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>Diof<span class="highlight">dev</span></h2>
-                    <p>Depuis 2015, votre partenaire digital de confiance.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Liens rapides</h4>
-                    <ul>
-                        <li><a href="#accueil">Accueil</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#apropos">À propos</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h4>Newsletter</h4>
-                    <p>Recevez nos actualités et conseils</p>
-                    <form action="#">
-                        <input type="email" placeholder="Votre email">
-                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Diofdev. Tous droits réservés. | <a href="#">Mentions légales</a> | <a href="#">Politique de confidentialité</a></p>
-            </div>
-        </div>
+    <footer>
+        <p>&copy; 2026 Diofdev – Tous droits réservés. | <a href="#">Mentions légales</a></p>
     </footer>
 
-    <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-         // Initialisation de AOS (Animate On Scroll)
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 100
+        // Menu burger
+        const burger = document.querySelector('.burger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        burger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
         });
         
-        // Menu mobile
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
-        
-        // Fermer le menu mobile lors du clic sur un lien
-        document.querySelectorAll('.nav-link').forEach(link => {
+        // Fermer le menu après clic sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
+                navLinks.classList.remove('active');
             });
         });
-        
-        // Changement de style du header au scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-            }
-        });
-        
-        // Gestion du lien actif dans la navigation
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
-        
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Animation des nombres dans les statistiques (optionnel)
-        const statNumbers = document.querySelectorAll('.stat-number');
-        const speed = 200;
-        
-        statNumbers.forEach(stat => {
-            const updateCount = () => {
-                const target = parseInt(stat.innerText.replace(/[^0-9]/g, ''));
-                const count = parseInt(stat.innerText.replace(/[^0-9]/g, ''));
-                const increment = target / speed;
-        
-                if (count < target) {
-                    stat.innerText = Math.ceil(count + increment) + (stat.innerText.includes('+') ? '+' : '');
-                    setTimeout(updateCount, 10);
-                } else {
-                    stat.innerText = target + (stat.innerText.includes('+') ? '+' : '');
-                }
-            };
-        
-            // Déclencher l'animation quand l'élément entre dans le viewport
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        updateCount();
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.5 });
-        
-            observer.observe(stat);
-        }); 
     </script>
 </body>
 </html>
